@@ -34,7 +34,7 @@ sh installer.sh
    
 ## How to Change the Model
 
-. Change `ollama pull` in `settings-ollama.yaml` to whatever you want.
+. Change `llm_model:` in `settings-ollama.yaml` to what you've installed.
 
 ## Documentation 
 
