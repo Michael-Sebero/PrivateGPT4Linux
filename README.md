@@ -34,7 +34,7 @@ sh installer.sh
    
 ## How to Change the Model
 
-. Reinstall PrivateGPT but replace `ollama pull llama3.1` and `ollama pull nomic-embed-text` in the installer.
+. Change `ollama pull` in `settings-ollama.yaml` to whatever you want.
 
 ## Documentation 
 
