@@ -7,6 +7,12 @@ curl -fsSL https://ollama.com/install.sh | sh
 git clone https://github.com/zylon-ai/private-gpt
 cd private-gpt
 
+# Extract model names from settings-ollama-pg.yaml
+if [ -f "settings-ollama-pg.yaml" ]; then
+    LLM_MODEL=$(grep -E "^llm_model:" settings-ollama-pg.yaml | sed 's/llm_model: *//')
+    EMBEDDING_MODEL=$(grep -E "^embedding_model:" settings-ollama-pg.yaml | sed 's/embedding_model: *//')
+fi
+
 # Start Ollama server in the background
 ollama serve &
 OLLAMA_PID=$!
@@ -15,8 +21,8 @@ OLLAMA_PID=$!
 sleep 5
 
 # Pull the required models
-ollama pull llama3.1
-ollama pull nomic-embed-text
+ollama pull $LLM_MODEL
+ollama pull $EMBEDDING_MODEL
 
 # Download Pyenv
 curl https://pyenv.run | bash
